@@ -2,6 +2,7 @@
 
 import json
 import os
+import time
 from json import JSONDecodeError
 from os import stat
 
@@ -31,6 +32,12 @@ def get_input_judgement():
     if choose == 'y' or choose == 'yes':
         return True
     return False
+
+
+def update_desktop_cache():
+    print("Refreshing desktop cache, waiting for 10s")
+    Cmdline.run("sudo update-desktop-database --quiet")
+    time.sleep(10)
 
 
 def patch_app(app_desktop_path: str, _patches: dict):
@@ -132,6 +139,7 @@ for desktop in config_json.keys():
         # Remove old .desktop file
         print("Removing old target .desktop file")
         Cmdline.run("sudo rm -rf %s" % sys_desktop_path)
+        update_desktop_cache()
 
         # Create symbolic link
         print("Creating symbolic link:\n\t%s ->\n\t%s" % (user_desktop_path, sys_desktop_path))

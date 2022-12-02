@@ -2,7 +2,8 @@ from config import FILE_ENCODING
 
 
 class DesktopParser:
-    __data = {}
+    def __init__(self):
+        self.__data = {}
 
     def add_section(self, section):
         if section not in self.__data.keys():
