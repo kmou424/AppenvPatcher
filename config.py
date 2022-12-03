@@ -9,5 +9,4 @@ HOME_PATH = os.getenv("HOME")
 CONFIG_DIR = os.path.join(HOME_PATH, ".config/appenv_patcher")
 
 USER_PATCH_CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
-USER_APPLICATIONS_DIR = os.path.join(CONFIG_DIR, "applications")
-USER_BACKUP_DIR = os.path.join(CONFIG_DIR, "backup")
+USER_APPLICATIONS_DIR = os.path.join(HOME_PATH, ".local/share/applications")
